@@ -1,0 +1,29 @@
+---
+ - name: install PHP
+   yum: name={{item}} state=installed enablerepo=remi,remi-php56
+   with_items:
+     - php
+     - php-mbstring
+     - php-mcrypt
+     - php-mysqlnd
+     - php-devel
+     - php-pdo
+     - php-gd
+     - php-cli
+     - php-dbg
+     - php-pecl-xdebug
+     - php-pear
+     - php-pecl-mailparse
+
+ - name: configure timezone PHP
+   replace: >
+     dest=/etc/php.ini
+     regexp="^;date\.timezone ="
+     replace="date.timezone = Asia/Tokyo"
+
+ # memcached
+ - name: install Memcached
+   yum: name={{item}} state=installed enablerepo=remi,remi-php56
+   with_items:
+     - memcached-devel
+     - php-pecl-memcache

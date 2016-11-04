@@ -1,0 +1,17 @@
+---
+ - name: add MySQL5.6 repo
+   command: >
+     yum -y install http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+     creates=/etc/yum.repos.d/mysql-community.repo
+
+ - name: install MySQL
+   yum: name={{item}}
+   with_items:
+     - mysql-server
+     - MySQL-python
+
+ - name: start MySQL
+   service: name=mysqld state=started enabled=yes
+
+ - name: add MySQL user
+   mysql_user: name={{ mysql_user_name }} password={{ mysql_user_password }} priv=*.*:ALL

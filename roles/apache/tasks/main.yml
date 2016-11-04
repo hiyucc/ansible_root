@@ -1,0 +1,14 @@
+---
+ - name: install Apache
+   yum: name=httpd
+
+ - name: start Apache
+   service: name=httpd state=started enabled=yes
+
+ - name: enable .htaccess
+   replace: 
+     dest=/etc/httpd/conf/httpd.conf
+     regexp='AllowOverride None'
+     replace='AllowOverride All'
+   notify:
+     - restart httpd

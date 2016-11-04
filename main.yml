@@ -1,0 +1,15 @@
+---
+- hosts: all
+  connection: local
+  sudo: yes
+  roles:
+    - yum
+    - apache
+    - git
+    - mysql
+    - php
+    - composer
+    - zsh
+    - vim
+    - tmux
+

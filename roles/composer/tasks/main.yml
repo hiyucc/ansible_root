@@ -1,0 +1,10 @@
+---
+ - name: install Composer
+   become: true
+   shell: curl -sS https://getcomposer.org/installer | php
+
+ - name: Composer
+   shell: ./composer.phar
+
+ - name: Composer move
+   shell: mv composer.phar /usr/local/bin/composer

@@ -1,0 +1,12 @@
+---
+ - name: tmux library install
+   yum: name={{item}} state=installed
+   with_items:
+     - gcc
+     - gcc-c++
+     - libevent
+     - ncurses
+     - ncurses-devel
+
+ - name: tmux install
+   yum: name=tmux

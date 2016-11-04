@@ -1,0 +1,6 @@
+---
+ - name: vim
+   yum: name={{item}} state=installed
+   with_items:
+     - vim-enhanced
+     - vim-common

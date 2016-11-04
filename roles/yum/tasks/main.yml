@@ -1,0 +1,6 @@
+---
+ - name: add epel repo
+   yum: name=epel-release
+
+ - name: add remi repo
+   command: rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
